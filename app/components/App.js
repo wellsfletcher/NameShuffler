@@ -27,6 +27,7 @@ class RandomizerArea extends React.Component {
         };
 
         // this._randomize();
+        // this commit has no meaning
 
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit = this.handleSubmit.bind(this);
