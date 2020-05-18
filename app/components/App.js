@@ -32,6 +32,10 @@ class RandomizerArea extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.setState({randomizations: 0});
+    }
+
     handleChange(event) {
         this.setState({input: event.target.value});
     }
@@ -47,8 +51,9 @@ class RandomizerArea extends React.Component {
 
     _checkRiggedConditions() {
         var result = false;
-        var totalRandomizations = this.state.randomizations;
-        if ((totalRandomizations % RandomizerArea._parseList(this.state.input).length) + 3 == 0) {
+        var totalRandomizations = this.state.randomizations + 1;
+        // if ((totalRandomizations % RandomizerArea._parseList(this.state.input).length) + 3 == 0) {
+        if (totalRandomizations == 3) {
             result = true;
         }
         return result;
@@ -80,6 +85,7 @@ class RandomizerArea extends React.Component {
             var index = shuffledList.indexOf(this.props.riggedName);
             if (index != -1) {
                 RandomizerArea._swap(shuffledList, 0, index);
+                alert('The is rigged lmao');
             }
         }
 
@@ -159,7 +165,7 @@ export class App extends React.Component {
     render() {
         return (
             <div>
-                <h1> The Name Shuffler </h1>
+                <h1> The Name Shuffler! </h1>
                 <p> Enter a list of names separated by line breaks. The Name Shuffler will use this to generate a randomized list of names. </p>
                 <RandomizerArea riggedName="Cassidy Bollman"/>
             </div>
