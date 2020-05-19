@@ -2,10 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-class InputArea extends React.Component {
+class Form extends React.Component {
     render() {
         return (
             <form onSubmit={(event) => this.props.onSubmit(event)}>
+                {this.props.children}
+            </form>
+        );
+    }
+}
+
+class InputArea extends React.Component {
+    render() {
+        return (
+            <Form onSubmit={(event) => this.props.onSubmit(event)}>
                 <label>
                     <textarea value={this.props.value} onChange={(event) => this.props.onChange(event)} />
                 </label>
@@ -166,7 +176,7 @@ export class App extends React.Component {
     render() {
         return (
             <div>
-                <h1> The Name Shuffler </h1>
+                <h1> The Name Shuffler! </h1>
                 <p> Enter a list of names separated by line breaks. The Name Shuffler will use this to generate a randomized list of names. </p>
                 <RandomizerArea riggedName="Cassidy Bollman"/>
             </div>
