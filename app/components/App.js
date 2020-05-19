@@ -21,7 +21,7 @@ class InputArea extends React.Component {
                 </label>
                 <br />
                 <input type="submit" value={this.props.submitText} />
-            </form>
+            </Form>
         );
     }
 }
