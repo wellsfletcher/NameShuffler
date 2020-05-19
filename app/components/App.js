@@ -86,7 +86,7 @@ class RandomizerArea extends React.Component {
             var index = shuffledList.indexOf(this.props.riggedName);
             if (index != -1) {
                 RandomizerArea._swap(shuffledList, 0, index);
-                alert('The is rigged lmao');
+                // alert('The is rigged lmao');
             }
         }
 
@@ -166,7 +166,7 @@ export class App extends React.Component {
     render() {
         return (
             <div>
-                <h1> The Name Shuffler! </h1>
+                <h1> The Name Shuffler </h1>
                 <p> Enter a list of names separated by line breaks. The Name Shuffler will use this to generate a randomized list of names. </p>
                 <RandomizerArea riggedName="Cassidy Bollman"/>
             </div>
