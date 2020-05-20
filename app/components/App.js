@@ -17,10 +17,16 @@ class InputArea extends React.Component {
         return (
             <Form onSubmit={(event) => this.props.onSubmit(event)}>
                 <label>
-                    <textarea value={this.props.value} onChange={(event) => this.props.onChange(event)} />
+                    <textarea
+                        value={this.props.value}
+                        onChange={(event) => this.props.onChange(event)}
+                        rows={6}
+                    />
                 </label>
-                <br />
-                <input type="submit" value={this.props.submitText} />
+                <input
+                    type="submit" value={this.props.submitText}
+                    className="primary"
+                />
             </Form>
         );
     }
@@ -136,14 +142,15 @@ class RandomizerArea extends React.Component {
     render() {
         return (
             <div>
-                <h3>Input</h3>
+                <p>Enter a list of names separated by line breaks. "The Name Shuffler" will use this to generate a randomized list of names.</p>
+                <h2>Input</h2>
                 <InputArea
                     value={this.state.input}
                     onChange={(event) => this.handleChange(event)}
                     onSubmit={(event) => this.handleSubmit(event)}
                     submitText="Randomize"
                 />
-                <h3>Output</h3>
+                <h2>Output</h2>
                 <List
                     items={this.state.output}
                 />
@@ -174,10 +181,12 @@ class Item extends React.Component {
 
 export class App extends React.Component {
     render() {
+        /*
+        <h1> The Name Shuffler </h1>
+        <p> Enter a list of names separated by line breaks. The Name Shuffler will use this to generate a randomized list of names. </p>
+        */
         return (
             <div>
-                <h1> The Name Shuffler! </h1>
-                <p> Enter a list of names separated by line breaks. The Name Shuffler will use this to generate a randomized list of names. </p>
                 <RandomizerArea riggedName="Cassidy Bollman"/>
             </div>
         );
