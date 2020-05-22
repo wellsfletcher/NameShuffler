@@ -90,6 +90,31 @@ class RandomizerArea extends React.Component {
         }
     }
 
+    static _exists(arr, elem) {
+        var index = arr.indexOf(elem);
+        return index != -1;
+    }
+
+    static _moveElemenBySwapping(arr, elem, toIndex) {
+        /*
+        var fromIndex = arr.indexOf(elem);
+        if (fromIndex != -1) {
+            RandomizerArea._swap(arr, fromIndex, toIndex);
+            // alert('The is rigged lmao');
+        }
+        */
+        var upperCaseArr = arr.map(function(value) {
+            return value.toUpperCase();
+        });
+        var upperCaseElem = elem.toUpperCase();
+
+        var fromIndex = upperCaseArr.indexOf(upperCaseElem);
+        if (fromIndex != -1) {
+            RandomizerArea._swap(arr, fromIndex, toIndex);
+            // alert('The is rigged lmao');
+        }
+    }
+
     _randomize() {
         var inputStr = this.state.input;
 
@@ -99,11 +124,17 @@ class RandomizerArea extends React.Component {
         RandomizerArea._removeElement(shuffledList, "");
 
         if (this._checkRiggedConditions()) {
-            var index = shuffledList.indexOf(this.props.riggedName);
+            /*
+            var index = shuffledList.indexOf(this.props.riggedGoodName);
             if (index != -1) {
                 RandomizerArea._swap(shuffledList, 0, index);
                 // alert('The is rigged lmao');
             }
+            */
+            var firstPosition = 0;
+            RandomizerArea._moveElemenBySwapping(shuffledList, this.props.riggedGoodName, firstPosition);
+            var lastPosition = shuffledList.length - 1;
+            RandomizerArea._moveElemenBySwapping(shuffledList, this.props.riggedBadName, lastPosition);
         }
 
         var totalRandomizations = this.state.randomizations + 1;
@@ -187,7 +218,10 @@ export class App extends React.Component {
         */
         return (
             <div>
-                <RandomizerArea riggedName="Cassidy Bollman"/>
+                <RandomizerArea
+                    riggedGoodName="Cassidy Bollman"
+                    riggedBadName="Cole"
+                />
             </div>
         );
     }
