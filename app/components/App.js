@@ -39,8 +39,10 @@ class RandomizerArea extends React.Component {
         this.state = {
             randomizations: 0,
             input: "Joe\nNancy\nJong",
-            output: RandomizerArea._shuffle(["Joe", "Nancy", "Jong"])
+            // output: RandomizerArea._shuffle(["Joe", "Nancy", "Jong"])
+            output: [""]
         };
+        // this._randomize();
 
         // this._randomize();
         // this commit has no meaning
@@ -50,7 +52,10 @@ class RandomizerArea extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({randomizations: 0});
+        this.setState({
+            randomizations: 0,
+        });
+        this._randomize();
     }
 
     handleChange(event) {
